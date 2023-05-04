@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Delete Functionality</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+<hr>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+                <label for="number">Mobile Number</label>
+                <input type="number" class="form-control" id="number">
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addData()">Add Data</button>
+        </form>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Table Data will be added dynamically here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    let data = [];
+
+function addData() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let number = document.getElementById("number").value;
+    let newData = {
+        name: name,
+        email: email,
+        number : number
+    };
+    data.push(newData);
+    renderTable();
+    clearForm();
+}
+
+function deleteData(index) {
+    data.splice(index, 1);
+    renderTable();
+}
+
+function renderTable() {
+    let tableBody = document.getElementById("tableBody");
+    let tableHtml = "";
+    for(let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+        tableHtml += "<tr><td>" + data[i].name + "</td><td>" + data[i].email + "</td> <td>" + data[i].number + "</td><td><button class='btn btn-danger' onclick='deleteData(" + i + ")'>Delete</button></td></tr>";
+    }
+    tableBody.innerHTML = tableHtml;
+}
+
+function clearForm() {
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("number").value = "";
+}
+
+</script>
+
+
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin-bottom: 50px;
+    }
+    .container {
+        background-color:white;
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        border: solid 9px beige;
+        margin-top: 100px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    font-size: 16px;
+    }
+
+</style>

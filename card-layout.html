@@ -1,0 +1,87 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1 class="header">Simple card layout</h1>
+<hr>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <h1 class="font-family">Ownership</h1>
+      <p>Own what you do !</p>
+      <p>Ownership is the legal right to use, possess, and give away a thing.</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <h1 class="font-family">Respect</h1>
+      <p>Everyone has a role that matters !</p>
+      <p>Customer respect is defined by a standard of conduct a mutually agreed upon set </p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h1 class="font-family">Integrity</h1>
+      <p> Right and moral and ethics ALWAYS !</p>
+      <p>The quality of being honest and having strong moral principles.</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h1 class="font-family">Customer success</h1>
+      <p>Delivered more than promised !</p>
+      <p>Customer Success Management is a specialized form of customer relationship.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 10px;
+      margin-top: 50px;
+      
+    }
+    
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+    
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+    }
+    
+    .font-family{
+        font-family: system-ui;
+    }
+    .header{
+        text-align:center;
+    }
