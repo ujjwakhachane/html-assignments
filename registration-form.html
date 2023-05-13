@@ -1,84 +1,421 @@
+<div class="container">
+	<div class="title">Registration Form</div>
+	<form id="form">
+		<div class="user__details">
+			<div class="input__box form-control ">
+				<span class="details">Full Name</span>
+				<input type="text" placeholder="Enter the name " id="fullname">
+				<span id="nameError" style="color: red;"></span><br>
+			</div>
+			<div class="input__box">
+				<span class="details">Username</span>
+				<input type="text" placeholder="Enter User name" id="username">
+				<span id="userNnameError" style="color: red;"></span><br>
 
-<html>
-<head>
-	<title>Registration form</title>
-	<style>
-		.form-container {
-			max-width: 600px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #f2f2f2;
-			border-radius: 5px;
-			box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
-            margin-top: 20px;
+			</div>
+			<div class="input__box">
+				<span class="details">Email</span>
+				<input type="email" placeholder="Enter email id" id="email">
+				<span id="emailError" style="color: red;"></span><br>
+
+			</div>
+
+			<div class="input__box">
+				<span class="details">Password</span>
+				<input type="password" placeholder="Enter Password" id="password">
+				<span id="passwordError" style="color: red;"></span><br>
+
+			</div>
+			<div class="input__box">
+				<span class="details">Confirm Password</span>
+				<input type="password" placeholder="Enter confirm password" id="confirm-password">
+				<span id="confirmPasswordError" style="color: red;"></span><br>
+
+			</div>
+
+			<div class="input__box">
+				<span class="details">Phone Number</span>
+				<input type="tel" pattern="[1-9]{1}[0-9]{9}" id="phone" placeholder="Enter phone Number">
+				<span id="phoneError" style="color: red;"></span><br>
+
+			</div>
+
+			<div class="input__box">
+				<span class="details">Date</span>
+				<input type="date" id="date">
+				<span id="dateError" style="color: red;"></span><br>
+
+			</div>
+			<div class="input__box">
+				<span class="details">Time</span>
+				<input type="time" id="time">
+				<span id="timeError" style="color: red;"></span><br>
+
+			</div>
+
+			<div class="input__box">
+				<span class="details">Message:</label>
+					<textarea class="form-control" id="message" name="message" required></textarea>
+					<span id="messageError" style="color: red;"></span><br>
+
+			</div>
+			<div class="input__box">
+				<span class="details">Range</span>
+				<input type="range" min="10" max="100" required>
+			</div>
+
+			<div class="input__box">
+				<span class="details">Hobbies:</label>
+					<select id="selectBox" style="margin-left: 5px;" name="hobbies">
+						<option value="">Select your hobbies</option>
+						<option value="Playing chess">Playing chess</option>
+						<option value="Reading Book">Reading books</option>
+						<option value="Swimming">Swimming</option>
+					</select>
+					<span id="messageError" style="color: red;"></span><br>
+			</div>
+		</div>
+
+		<div class="input__box">
+			<span class="details">Active :</label>
+			<input type="checkbox" id="checkbox">
+			
+		</div>
+
+		<div class="gender__details">
+			<input type="radio" name="gender" id="dot-1">
+			<input type="radio" name="gender" id="dot-2">
+			<input type="radio" name="gender" id="dot-3">
+			<span class="gender__title">Gender</span>
+			<div class="category">
+				<label for="dot-1">
+					<span class="dot one"></span>
+					<span>Male</span>
+				</label>
+				<label for="dot-2">
+					<span class="dot two"></span>
+					<span>Female</span>
+				</label>
+				<label for="dot-3">
+					<span class="dot three"></span>
+					<span>Prefer not to say</span>
+				</label>
+			</div>
+		</div>
+		<div class="button">
+			<input style="cursor: pointer;" type="submit" id="submitBtn" value="Register">
+		</div>
+	</form>
+</div>
+
+<script>
+	const myForm = document.getElementById("myForm");
+	const nameInput = document.getElementById("fullname");
+	const userNameInput = document.getElementById("username");
+	const emailInput = document.getElementById("email");
+	const passwordInput = document.getElementById("password");
+	const confirmPassword = document.getElementById("confirm-password")
+	const phoneInput = document.getElementById("phone");
+	const date = document.getElementById("date");
+	const time = document.getElementById("time");
+	const messageInput = document.getElementById("message")
+	const selectInput  = document.getElementById("selectBox")
+	const selectedOption = selectBox.options[selectBox.selectedIndex].value;
+
+
+	const nameError = document.getElementById("nameError");
+	const userNnameError = document.getElementById("userNnameError");
+	const phoneError = document.getElementById("phoneError");
+	const emailError = document.getElementById("emailError");
+	const passwordError = document.getElementById("passwordError");
+	const confirmPasswordError = document.getElementById("confirmPasswordError");
+	const dateError = document.getElementById("dateError");
+	const timeError = document.getElementById("timeError")
+	const messageError = document.getElementById("messageError")
+	const selectError = document.getElementById("selectError")
+	const submitBtn = document.getElementById("submitBtn");
+
+
+	submitBtn.addEventListener("click", function (event) {
+		event.preventDefault();
+		let isValid = true;
+
+		// Validate name
+		if (nameInput.value.trim() === "") {
+			nameError.textContent = "Name is required";
+			isValid = false;
+		} else {
+			nameError.textContent = "";
 		}
 
-		label {
-			display: block;
-			font-weight: bold;
-			margin-bottom: 10px;
+		// validate username
+		if (userNameInput.value.trim() === "") {
+			userNnameError.textContent = "User Name is required";
+			isValid = false;
+		} else {
+			userNnameError.textContent = "";
 		}
 
-		input[type="text"],
-		input[type="email"],
-		input[type="password"],
-		select,
-		textarea {
+		// validate message
+		if (messageInput.value.trim() === "") {
+			messageError.textContent = "Message Is required";
+			isValid = false;
+		} else {
+			messageError.textContent = "";
+		}
+
+
+		// Validate email
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(emailInput.value.trim())) {
+			emailError.textContent = "Invalid email format";
+			isValid = false;
+		} else {
+			emailError.textContent = "";
+		}
+
+		// Validate phone number
+		const phoneRegex = /^\d{10}$/;
+		if (!phoneRegex.test(phoneInput.value.trim())) {
+			phoneError.textContent = "Invalid phone number format";
+			isValid = false;
+		} else {
+			phoneError.textContent = "";
+		}
+
+		//validate password
+
+
+		if (password != confirmPassword) {
+			passwordError.innerHTML = "Password is required.";
+			confirmPasswordError.innerHTML = "Passwords do not match.";
+			return false;
+		} else {
+			passwordError.innerHTML = "";
+			confirmPasswordError.innerHTML = "";
+		}
+
+		// Check if password meets requirements
+		var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+		if (!regex.test(password)) {
+			passwordError.innerHTML = "Password must contain at least 8 characters, one lowercase letter, one uppercase letter, one number, and one special character.";
+			return false;
+		} else {
+			passwordError.innerHTML = "";
+		}
+
+
+		// Validate date
+		var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+		alert('hi');
+		if (!dateRegex.test(date)) {
+			dateError.innerHTML = "Please enter a valid date in the format yyyy-mm-dd.";
+			return false;
+		} else {
+			dateError.innerHTML = "";
+		}
+
+
+		// Check if time is in HH:MM format
+		var time_regex = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
+		if (!time_regex.test(time)) {
+			timeError.innerHTML = "Invalid time format. Please enter time in HH:MM format";
+			return false;
+		}
+
+		const selectBox = document.getElementById("selectBox");
+        const selectedOption = selectBox.options[selectBox.selectedIndex].value;
+      
+      // Check if an option is selected
+      if (selectedOption == "") {
+		selectError.innerHTML = "Please select an option from the dropdown"
+        return false;
+      }
+
+	  
+
+
+
+		// Submit the form if all fields are valid
+		if (isValid) {
+			myForm.submit();
+		}
+	});
+</script>
+<style>
+	/* all */
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: "Poppins", sans-serif;
+	}
+
+	:root {
+		--main-blue: #71b7e6;
+		--main-purple: #9b59b6;
+		--main-grey: #ccc;
+		--sub-grey: #d9d9d9;
+	}
+
+	body {
+		display: flex;
+		height: 100vh;
+		justify-content: center;
+		/*center vertically */
+		align-items: center;
+		/* center horizontally */
+		background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+		padding: 10px;
+	}
+
+	/* container and form */
+	.container {
+		max-width: 700px;
+		width: 100%;
+		background: #fff;
+		padding: 25px 30px;
+		border-radius: 5px;
+	}
+
+	.container .title {
+		font-size: 25px;
+		font-weight: 500;
+		position: relative;
+	}
+
+	.container .title::before {
+		content: "";
+		position: absolute;
+		height: 3.5px;
+		width: 30px;
+		background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+		left: 0;
+		bottom: 0;
+	}
+
+	.container form .user__details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
+
+	/* inside the form user details */
+	form .user__details .input__box {
+		width: calc(100% / 2 - 20px);
+		margin-bottom: 15px;
+	}
+
+	.user__details .input__box .details {
+		font-weight: 500;
+		margin-bottom: 5px;
+		display: block;
+	}
+
+	.user__details .input__box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		border-radius: 5px;
+		border: 1px solid var(--main-grey);
+		padding-left: 15px;
+		font-size: 16px;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.user__details .input__box input:focus,
+	.user__details .input__box input:valid {
+		border-color: var(--main-purple);
+	}
+
+	/* inside the form gender details */
+
+	form .gender__details .gender__title {
+		font-size: 20px;
+		font-weight: 500;
+	}
+
+	form .gender__details .category {
+		display: flex;
+		width: 80%;
+		margin: 15px 0;
+		justify-content: space-between;
+	}
+
+	.gender__details .category label {
+		display: flex;
+		align-items: center;
+	}
+
+	.gender__details .category .dot {
+		height: 18px;
+		width: 18px;
+		background: var(--sub-grey);
+		border-radius: 50%;
+		margin: 10px;
+		border: 5px solid transparent;
+		transition: all 0.3s ease;
+	}
+
+	#dot-1:checked~.category .one,
+	#dot-2:checked~.category .two,
+	#dot-3:checked~.category .three {
+		border-color: var(--sub-grey);
+		background: var(--main-purple);
+	}
+
+	form input[type="radio"] {
+		display: none;
+	}
+
+	/* submit button */
+	form .button {
+		height: 45px;
+		margin: 45px 0;
+	}
+
+	form .button input {
+		height: 100%;
+		width: 100%;
+		outline: none;
+		color: #fff;
+		border: none;
+		font-size: 18px;
+		font-weight: 500;
+		border-radius: 5px;
+		background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+		transition: all 0.3s ease;
+	}
+
+	form .button input:hover {
+		background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
+	}
+
+	@media only screen and (max-width: 584px) {
+		.container {
+			max-width: 100%;
+		}
+
+		form .user__details .input__box {
+			margin-bottom: 15px;
 			width: 100%;
-			padding: 10px;
-			margin-bottom: 20px;
-			border: none;
-			border-radius: 3px;
-			background-color: #ffffff;
-			box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
 		}
 
-		input[type="submit"] {
-			background-color: #4CAF50;
-			color: #ffffff;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 3px;
-			cursor: pointer;
+		form .gender__details .category {
+			width: 100%;
 		}
 
-		
-		input[type="submit"]:hover {
-			background-color: #3e8e41;
+		.container form .user__details {
+			max-height: 300px;
+			overflow-y: scroll;
 		}
-        .center{
-            text-align: center;
-            font-family: system-ui;
-        }
-        .bg-color{
-            background-color:lightgray;        }
-	</style>
-</head>
-<body class="bg-color">
-    <h1 class="center">Basic form layout</h1>
-	<div class="form-container">
-		<form>
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" required>
 
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required>
-
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required>
-
-			<label for="gender">Gender:</label>
-			<select id="gender" name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				<option value="other">Other</option>
-			</select>
-
-			<label for="message">Message:</label>
-			<textarea id="message" name="message"></textarea>
-
-			<input type="submit" value="Submit">
-		</form>
-	</div>
-</body>
-</html> 
+		.user__details::-webkit-scrollbar {
+			width: 0;
+		}
+	}
+</style>
